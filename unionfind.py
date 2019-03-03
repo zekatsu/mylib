@@ -1,7 +1,7 @@
 class Unionfind():
-    def __init__(self, progsize):
-        self.table = [-1 for _ in range(progsize)]
-        self.size = [1 for _ in range(progsize)]
+    def __init__(self, vertexsize):
+        self.table = [-1 for _ in range(vertexsize)]
+        self.size = [1 for _ in range(vertexsize)]
     def find(self, x):
         while(self.table[x] >= 0):
             x = self.table[x]
