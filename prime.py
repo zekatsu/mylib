@@ -1,4 +1,4 @@
-MAX_PRIME = hoge
+MAX_PRIME = 10**9
 is_prime = [1] * MAX_PRIME
 primes = []
 is_prime[0] = 0
