@@ -11,12 +11,12 @@ class Unionfind():
         xp = self.find(x)
         yp = self.find(y)
         if xp != yp:
-            if self.table[xp] <= self.table[yp]:
-                self.table[yp] = xp
+            if self.table[xp] < self.table[yp]:
                 self.table[xp] += self.table[yp]
+                self.table[yp] = xp
             else:
-                self.table[xp] = yp
                 self.table[yp] += self.table[xp]
+                self.table[xp] = yp
 
 class Relativepos():
     def __init__(self, size):
