@@ -1,18 +1,18 @@
+inf = 10 ** 9
 s = set()
 u = set()
-dis = [10**9] * n
-# init
+dis = [inf] * n
 for i in range(n):
-    dis[i] = edge[i][s]
+    dis[i] = edge[0][i]
 for _ in range(n):
     if u == set():
         break
-    mindis = 10**9
+    mindis = inf
     for i in u:
         if dis[i] < mindis:
             mindis = dis[i]
-            a = i
-    s.add(a)
-    u.remove(a)
+            m = i
+    s.add(m)
+    u.remove(m)
     for i in u:
-        dis[i] = min(dis[i], dis[a] + edge[a][i])
+        dis[i] = min(dis[i], dis[m] + edge[m][i])
