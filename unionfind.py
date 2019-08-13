@@ -7,6 +7,11 @@ class Unionfind():
             x = self.table[x]
         return x
 
+    def same(self, x, y):
+        xp = self.find(x)
+        yp = self.find(y)
+        return xp == yp
+
     def union(self, x, y):
         xp = self.find(x)
         yp = self.find(y)
@@ -17,6 +22,16 @@ class Unionfind():
             else:
                 self.table[yp] += self.table[xp]
                 self.table[xp] = yp
+    
+    def print(self):
+        ret = {}
+        for i in range(len(self.table)):
+            p = self.find(i)
+            if p not in ret:
+                ret[p] = {i}
+            else:
+                ret[p].add(i)
+        print(ret)
 
 class Relativepos():
     def __init__(self, size):
@@ -42,3 +57,13 @@ class Relativepos():
             return True
         else:
             return xd + d == yd
+
+if __name__ == '__main__':
+    n, q = map(int, input().split())
+    query = [tuple(map(int, input().split())) for _ in range(q)]
+    u = Unionfind(n)
+    for p, a, b in query:
+        if p == 0:
+            u.union(a, b)
+        if p == 1:
+            print(['No', 'Yes'][u.same(a, b)])
