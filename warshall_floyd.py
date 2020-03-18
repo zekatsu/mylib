@@ -7,6 +7,7 @@ for i in range(n):
 for _ in range(m):
     a, b, c = map(int, input().split())
     d[a-1][b-1] = c
+    d[b-1][a-1] = c
 
 for k in range(n):
     for i in range(n):

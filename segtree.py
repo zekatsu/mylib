@@ -1,19 +1,24 @@
-class RMQsegtree():
+INF = 2 * 10**9
+class RQ():
     def __init__(self, prog):
         k = 1
         while k < len(prog):
             k <<= 1
-        prog += [2 * 10**9] * (k - len(prog))
+        prog += [INF] * (k - len(prog))
         self.size = k
         r = self.size
         l = r >> 1
         self.tree = [prog[i] for i in range(self.size)] * 2
+        self.tree[0] = INF
         while l:
             for i in range(l, r):
-                self.tree[i] = min(self.tree[i << 1], self.tree[(i << 1) + 1])
+                if self.tree[i << 1] == self.tree[(i << 1) + 1]:
+                    self.tree[i] = self.tree[i << 1]
+                else:
+                    self.tree[i] = INF
             l >>= 1
             r >>= 1
-    def mod(self, index, x):
+    def mod(self, l, r):
         i = index + self.size
         self.tree[i] = x
         while i:
@@ -31,12 +36,18 @@ class RMQsegtree():
             l >>= 1
             r >>= 1
         return ret
-import random
-a = [random.randrange(100) for _ in range(1000)]
-n = len(a)
-sta = RMQsegtree(a)
-for l in range(n):
-    for r in range(l+1, n):
-        if min(a[l:r]) != sta.minimum(l,r):
-            print('range({}, {})'.format(l,r))
-            print(min(a[l:r]), sta.minimum(l,r))
+    def print(self):
+        print(*self.tree)
+        k = 1
+        size = 2
+        for n in self.tree[1:]:
+            k += 1
+            print(n, end = ' ')
+            if k == size:
+                print()
+                size *= 2
+
+if __name__ == '__main__':
+    a = [1, 9, 8, 8, 8, 8, 8, 2, 2, 2, 3, 4]
+    q = RQ(a)
+    q.print()
