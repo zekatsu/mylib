@@ -23,3 +23,12 @@ def factorization(n):
     if n > 1:
         factor[n] = 1
     return factor
+
+def dfs(num, i):
+    if i < len(k):
+        m = 10 ** 18
+        p = k[i]
+        for j in range(f[p]+1):
+            m = min(m, dfs(num * p ** j, i+1))
+        return m
+    return F(num, n // num)
