@@ -14,8 +14,6 @@ dis[0] = 0
 hq.heappush(que, (0, 0))
 
 while que != []:
-    # print(*dis)
-    # print(que)
     d, v = hq.heappop(que)
     if d == dis[v]:
         for to, cost in edge[v]:

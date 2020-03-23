@@ -1,3 +1,5 @@
+import numpy
+
 def cross(a, b, c, d):
     s = a - b
     t = c - d
