@@ -23,12 +23,12 @@ class Unionfind():
                 self.table[yp] += self.table[xp]
                 self.table[xp] = yp
 
-n, m = int(input().split())
+n, m = map(int, input().split())
 edge = [tuple(map(int, input().split())) for _ in range(m)]
-u = Unionfind()
+u = Unionfind(n)
 ans = 0
-for a, b, c in sorted(edge, key = lamda x: x[2]):
+for a, b, c in sorted(edge, key = lambda x: x[2]):
     if not u.same(a, b):
         ans += c
-        u.unite(a, b)
+        u.union(a, b)
 print(ans)
