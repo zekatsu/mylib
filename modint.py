@@ -1,3 +1,4 @@
+mod = 10 ** 9 + 7
 def extGCD(a, b):
     if b == 0:
         return a, 1, 0
