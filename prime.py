@@ -1,4 +1,4 @@
-MAX_PRIME = 10**5
+MAX_PRIME = 10 ** 6
 is_prime = [1] * MAX_PRIME
 primes = []
 is_prime[0] = 0
@@ -24,11 +24,13 @@ def factorization(n):
         factor[n] = 1
     return factor
 
+n = int(input())
+f = factorization(n)
+k = list(f.keys())
 def dfs(num, i):
-    if i < len(k):
-        m = 10 ** 18
+    if i == len(k):
+        # 約数に対して何か行う
+    else:
         p = k[i]
         for j in range(f[p]+1):
-            m = min(m, dfs(num * p ** j, i+1))
-        return m
-    return F(num, n // num)
+            ret += dfs(num * p ** j, i+1)

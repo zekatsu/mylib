@@ -18,3 +18,17 @@ for i in range(1, N):
 
 def comb(a, b):
     return moddiv(moddiv(fact[a], fact[a-b]), fact[b])
+
+pow2 = [1] * 64
+pow2[1] = 2
+for i in range(2, 64):
+    pow2[i] = pow2[i-1] ** 2 % mod
+
+def pow(b):
+    ret = 1
+    for i in range(1, 64):
+        if b & 1:
+            ret *= pow2[i]
+            ret %= mod
+        b //= 2
+    return ret
