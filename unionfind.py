@@ -22,7 +22,7 @@ class Unionfind():
             else:
                 self.table[yp] += self.table[xp]
                 self.table[xp] = yp
-    
+
     def print(self):
         ret = {}
         for i in range(len(self.table)):
