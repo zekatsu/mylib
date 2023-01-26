@@ -23,7 +23,7 @@ class Unionfind():
                 self.table[yp] += self.table[xp]
                 self.table[xp] = yp
 
-    def print(self):
+    def root(self):
         ret = {}
         for i in range(len(self.table)):
             p = self.find(i)
@@ -31,7 +31,7 @@ class Unionfind():
                 ret[p] = {i}
             else:
                 ret[p].add(i)
-        print(ret)
+        ret
 
 class Relativepos():
     def __init__(self, size):
